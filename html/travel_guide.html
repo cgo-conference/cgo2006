@@ -1,0 +1,569 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<link rel="stylesheet" href="http://cgo.org/cgo2006/html/style.css">
+
+    <style>
+    div.poititle {
+      font-weight: bold
+    }
+
+    #maptable {
+      margin: 0em 1em 1em 1em;
+      border-width: 2px;
+    }
+ 
+    h3 {
+       clear: both;
+    }
+    </style>
+
+    <script src="http://maps.google.com/maps?file=api&v=1&key=ABQIAAAALP4PdPEp3QM8yNNi3C6ayRQH3hHKoiAOkptvYeVc2lhAloAukhS6ZtyLT5LE5RWsFj2Hkukaw887BQ" type="text/javascript"></script>
+
+<title>CGO-4 Attendees' Travel Guide to New York</title>
+<base target="_top">
+
+</head>
+
+<body>
+<h2>CGO-4 Attendees' Travel Guide to New York</h2>
+<p>
+New York City is one of the world's most famous cities, and among the
+older cities in North America.  Each city block is packed with
+restaurants, shops, and the city itself has a number of interesting
+attractions including the Broadway Theatre District, Radio City Music
+Hall, Rockefeller Center, the Statue of Liberty, and Ellis Island
+amongst many others.  Keep an eye on this page for information about
+travel to New York, restaurants around the conference venue, and
+attractions that will be of interest to attendees.
+</p>
+<p>
+In this guide you will find information about local attractions and a
+map of the conference venue conference hotel, and other points of
+interest.  We recommend that you start with the map to see where
+everything is located.  This will help you plan your trip.
+</p>
+
+<h3>CGO Conference Venues</h3>
+<p>
+There are three main locations of activities for CGO:
+<ol>
+<li> Columbia University.  Columbia fills a rectangle roughly between
+Riverside Drive and Morningside Park east-west, and from 110th Street
+to 122nd Street north-south.  It is primarily served by the 116th
+street stop of the #1 Subway line, which is a local stop.  For
+WORKSHOPS, on Sunday 26 March, we will be using the Schapiro Center
+and classrooms in the computer science department, in the northeast
+corner of campus.  For the MAIN CONFERENCE, from Monday-Wednesday,
+27-29 March, we will be using the Davis Auditorium, in the
+Schapiro Center, in the middle of the North side of campus.
+</li>
+<li> The On-the-Ave and Lucerne Hotels.  These hotels are located on the
+Upper West Side, near the 79th street #1 Subway stop (also a local stop; the
+express stops at 72nd street).  The On-the-Ave is on the south side of 77th
+street, just east of Broadway; the Lucerne is at the northwest corner of
+79th Street and Amsterdam avenue, one block east of Broadway. 
+</li>
+<li> The Times Square Area.  The Google reception and business meeting on
+Monday night, and the Spamalot excursion on Tuesday night, will be in the
+Times Square area.  Google New York is located at 1440 Broadway, with an
+entrance between 41st and 40th Streets.  Spamalot is at the Shubert Theater,
+at 225 West 44th Street, between Broadway and 8th Avenues.  
+</li>
+</ol>
+See the "Getting Around Manhattan" section below for information on how
+to get from one venue to the other.
+</p>
+<p>
+The conference hotels, the On-the-Ave and the Lucerne, as well as the
+conference venue, Columbia University, are all located on the
+Upper-west side of Manhattan.  Other Conference events are in
+mid-town.  The map below, shows the conference venue, hotels, and
+various points of interest relative to the venue.  You can use the map
+to plan your trip, book alternate hotels close to the Conference
+venue, etc.
+</p>
+
+<h3>Maps</h3>
+<ul>
+<li>
+  <table id="maptable" border=1 align="top">
+    <tr><td valign="top"> 
+    <div id="map" style="width: 500px; height: 500px"></div>
+   </div>
+   </td>
+   <td valign="top">
+   <div id="sidebar"></div>
+   </td>
+  </tr>
+</table>
+</li>
+<li><a href="http://www.mta.nyc.ny.us/nyct/maps/submap.htm">New York City Subway Map </a>
+</li>
+<li><a href="http://www.columbia.edu/about_columbia/map/">Interactive Map of the Columbia Campus </a>
+</li>
+</ul>
+</p>
+
+
+    <script type="text/javascript">
+    //<![CDATA[
+     
+      function getMarkerPopUpFunc(marker,html){
+        return function() {
+          marker.openInfoWindowHtml(html);
+        }
+      }
+
+      var points = new Array();
+      var categories = new Array("Venue","Airport","Hotel","Event","Hub");
+      var catnames = new Array("Conference Venues", "Airports", "Hotels",
+                               "Conference Events", "Transit Hub");
+
+      // Must have venue, all other keys are optional
+      points.venue = new Object();
+      points.venue["letter"] = "A";
+      points.venue["cat"] = "Venue";
+      points.venue["name"] = "Schapiro Center (Main) ";
+      points.venue["loc"] = new GPoint(-73.960894, 40.809579);
+      // Really out to fetch this data via GXMLRequest 
+      // and use GXml and GXslt to process it.
+      points.venue["html"] = "<html><body>" +
+                             '<div class="poititle">Main Conference Venue</div>' +
+                             "Schapiro Center, <br />Columbia University</br>" +
+                             "</body></html>";
+
+      points.wvenue = new Object();
+      points.wvenue["letter"] = "B";
+      points.wvenue["cat"] = "Venue";
+      points.wvenue["name"] = "CS Department (Workshops) ";
+      points.wvenue["loc"] = new GPoint(-73.960165, 40.808921);
+      // Really out to fetch this data via GXMLRequest 
+      // and use GXml and GXslt to process it.
+      points.wvenue["html"] = "<html><body>" +
+                             '<div class="poititle">Workshops Venue</div>' +
+                             "Computer Science Department, <br />Columbia University<br /></p>" +
+                             "</body></html>";
+
+
+
+      // On-the-Ave Hotel
+      points.hotel1 = new Object();
+      points.hotel1["letter"] = "C";
+      points.hotel1["cat"] = "Hotel";
+      points.hotel1["name"] = "On-the-Ave Hotel";
+      points.hotel1["loc"] = new GPoint(-73.980888, 40.782528);
+      points.hotel1["html"] = "<html><body>" +
+                             '<div class="poititle">On-the-Ave Hotel</div>' +
+                             "<address>" +
+                             "2178 Broadway (at 77th St)<br /> " +
+                             "New York, NY 10024." +
+                             "</address>" +
+                             "Phone: 800.497.6028 or 212.362.1100<br />" +
+                             '<a href="http://www.ontheave-nyc.com/main.htm">http://www.ontheave-nyc.com/main.htm</a><br />' +
+                             "</body></html>";
+
+      // Lucerne Hotel
+      points.hotel2 = new Object();
+      points.hotel2["letter"] = "D";
+      points.hotel2["cat"] = "Hotel";
+      points.hotel2["name"] = "Lucerne Hotel";
+      points.hotel2["loc"] = new GPoint(-73.978371, 40.783130);
+      points.hotel2["html"] = "<html><body>" +
+                             '<div class="poititle">Hotel Lucerne</div>' +
+                             "<address>" +
+                             "201 West 79th St. <br />" +
+                             "New York, NY 10024." +
+                             "</address>" +
+                             "Phone: 800.492.8122 or 212.875.1000<br />" +
+                             '<a href="http://www.ontheave-nyc.com/main.htm">http://www.ontheave-nyc.com/main.htm</a><br />' +
+                             "</body></html>";
+
+      // Spamalot Outing
+      points.outing = new Object();
+      points.outing["letter"] = "E";
+      points.outing["cat"] = "Event";
+      points.outing["name"] = "CGO Spamalot Outing";
+      points.outing["loc"] = new GPoint(-73.987679, 40.758048);
+      points.outing["html"] = "<html><body>" +
+                             '<div class="poititle">CGO Outing: Spamalot</div>' +
+                             'Shubert Theatre' +
+                             "<address>" +
+                             "225 West 44th Street <br />" +
+                             ' (Between Broadway and 8th Ave.)<br/> ' +
+                             "New York, NY 10036." +
+                             "</address>" +
+                             '<a href="http://www.montypythonsspamalot.com">http://www.montypythonsspamalot.com</a><br />' +
+                             "</body></html>";
+
+
+      // Luncheons
+      points.luncheon = new Object();
+      points.luncheon["letter"] = "F";
+      points.luncheon["cat"] = "Event";
+      points.luncheon["name"] = "Luncheons (Faculty House)";
+      points.luncheon["loc"] = new GPoint(-73.959242, 40.806412);
+      points.luncheon["html"] = "<html><body>" +
+                             '<div class="poititle">CGO Luncheons/Keynotes</div>' +
+                             'Faculty House,<br/>Columbia University' +
+                             "</body></html>";
+
+      // Google Office
+      points.google = new Object();
+      points.google["letter"] = "G";
+      points.google["cat"] = "Event";
+      points.google["name"] = "Google (Reception)";
+      points.google["loc"] = new GPoint(-73.986879, 40.754739);
+      points.google["html"] = "<html><body>" +
+                             '<div class="poititle">Google, NY</div>' +
+                             "<address>" +
+                             "1440 West Broadway<br />"+
+                             "(bewtween 40th and 41st St.)<br />" +
+                             "New York, NY 10018." +
+                             "</address>" +
+                             "</body></html>";
+
+      // Penn Station 
+      points.penn = new Object();
+      points.penn["letter"] = "H";
+      points.penn["cat"] = "Hub";
+      points.penn["name"] = "Penn Station";
+      points.penn["loc"] = new GPoint(-73.993134, 40.751028);
+      points.penn["html"] = "<html><body>" +
+                             '<div class="poititle">Penn Station NYC</div>' +
+                             "<address>" +
+                             "West 33st Street<br />" +
+                             '(Between 7th Ave. and 8th Ave.)<br/> ' +
+                             "New York, NY 10036." +
+                             "</address>" +
+                             "</body></html>";
+
+      points.gc = new Object();
+      points.gc["letter"] = "I";
+      points.gc["cat"] = "Hub";
+      points.gc["name"] = "Grand Central Station";
+      points.gc["loc"] = new GPoint(-73.977500, 40.752239);
+      points.gc["html"] = "<html><body>" +
+                             '<div class="poititle">Grand Central Station</div>' +
+                             "<address>" +
+                             "101 East 42nd Street<br />" +
+                             '(Between Park Ave. and Lexington Ave.)<br/> ' +
+                             "New York, NY 10036." +
+                             "</address>" +
+                             "</body></html>";
+
+      points.lga = new Object();
+      points.lga["letter"] = "J";
+      points.lga["cat"] = "Airport";
+      points.lga["name"] = "LaGuardia";
+      points.lga["loc"] = new GPoint(-73.873057, 40.772709);
+      points.lga["html"] = "<html><body>" +
+                             '<div class="poititle">LaGuardia Airport</div>' +
+                             "<address>" +
+                             "Flushing, NY 11371<br />" +
+                             "</address>" +
+                             "</body></html>";
+
+
+      points.jfk = new Object();
+      points.jfk["letter"] = "K";
+      points.jfk["cat"] = "Airport";
+      points.jfk["name"] = "JFK (Kennedy)";
+      points.jfk["loc"] = new GPoint(-73.807204, 40.665137);
+      points.jfk["html"] = "<html><body>" +
+                             '<div class="poititle">JFK Airport</div>' +
+                             "<address>" +
+                             "Jamaica , NY 11430<br />" +
+                             "</address>" +
+                             "</body></html>";
+
+      points.ewr = new Object();
+      points.ewr["letter"] = "L";
+      points.ewr["cat"] = "Airport";
+      points.ewr["name"] = "Newark-Liberty ";
+      points.ewr["loc"] = new GPoint(-74.184494, 40.7081);
+      points.ewr["html"] = "<html><body>" +
+                             '<div class="poititle">Newark-Liberty Airport</div>' +
+                             "<address>" +
+                             "Newark, NJ 07114<br />" +
+                             "</address>" +
+                             "</body></html>";
+
+
+
+
+    var map = new GMap(document.getElementById("map"));
+    map.addControl(new GLargeMapControl());
+    map.addControl(new GMapTypeControl());
+
+    map.centerAndZoom(points.venue.loc, 4);
+ 
+
+    var firstloc = 1;
+    for (var point in points) {
+      var icon = new GIcon();
+      if(points[point].letter <= 'J') {
+        icon.image = "http://www.google.com/intl/en_ALL/mapfiles/marker" + points[point].letter + ".png";
+        icon.printImage = "http://www.google.com/intl/en_ALL/mapfiles/marker" + points[point].letter + "ie.gif";
+        icon.mozPrintImage = "http://www.google.com/intl/en_ALL/mapfiles/marker" + points[point].letter + "ff.gif";
+      } else {
+        icon.image = "http://www.google.com/intl/en_ALL/mapfiles/marker.png";
+        icon.printImage = "http://www.google.com/intl/en_ALL/mapfiles/markerie.gif";
+        icon.mozPrintImage = "http://www.google.com/intl/en_ALL/mapfiles/markerff.gif";
+      }
+      icon.shadow = "http://www.google.com/intl/en_ALL/mapfiles/shadow50.png";
+      icon.printShadow = "http://www.google.com/intl/en_ALL/mapfiles/dithshadow.gif";
+      icon.iconSize = new GSize(20,34);
+      icon.shadowSize = new GSize(37,34);
+      icon.iconAnchor = new GPoint(10,34);
+      icon.infoWindowAnchor = new GPoint(15,10);
+      var marker = new GMarker(points[point].loc,icon);
+      var html = points[point].html;
+      var popupFunc = getMarkerPopUpFunc(marker,html);
+      map.addOverlay(marker);
+
+      points[point].marker = marker;
+      points[point].popup = popupFunc;
+      GEvent.addListener(marker, 'click', popupFunc);
+      if(firstloc) {
+        firstloc = 0;
+        marker.openInfoWindowHtml(html);
+      }
+    }
+
+
+    // Create a side bar of locations
+    var sidebar_html = "";
+    for (var cat in categories) {
+      sidebar_html += "<b>" + catnames[cat] + "</b><br />" ;
+      for (var point in points) {
+        if((points[point].name) && (points[point].cat == categories[cat])) {
+	  if(points[point].letter <= 'J')  {
+            sidebar_html += '<img height="17" width="10" src="http://www.google.com/intl/en_ALL/mapfiles/marker' + points[point].letter + '.png" />';
+          } else {
+            sidebar_html += '<img height="17" width="10" src="http://www.google.com/intl/en_ALL/mapfiles/marker.png" />';
+          }
+            sidebar_html +=    '<a '+
+                          'href="javascript:;"' +
+                          // Why doesn't the following work in href?
+                          'onclick=javascript:points["' + point + '"].popup()' +
+                          '>' +
+                           points[point].name +
+                           '</a><br />';
+        }
+      }
+    }
+
+    document.getElementById("sidebar").innerHTML = sidebar_html;
+
+    //]]>
+    </script>
+
+<h3>Airport Information</h3> 
+<p>
+New York City is served by 3 major international airports, JFK
+International Airport (JFK), Newark-Liberty International Airport
+(EWR), and LaGuardia International Airport (LGA).  To get from the
+airports to CGO, see the instructions below.  Recall that the
+conference hotels and venue are all on the Upper West side.  All the
+Mass-transit instructions will place you in a major transit hub in New
+York City.  See the rail directions below to determine how to get to
+the Conference Venue from those transit hubs.
+</p>
+<ul>
+<li>
+<p>
+From Newark Airport (EWR): A taxi to the Upper West side will cost
+about $70, including tolls and tip.  Texis operate on a flat-rate
+system; the taxi dispatcher will hand you a yellow rate card and
+indicate what your base flat-rate fare, before tolls and tip will be.
+Note that there are three terminals (A, B, and C) at Newark aiprort
+and there are sometimes very long taxi lines at one terminal but not
+at another.
+</p>
+<p>
+<a href="http://www.njtransit.com">New Jersey Transit</a> also
+operates an airtrain from the Newark Airport station with service into
+New York Penn Station.  The monorail to the Newark Airport train
+station is free; tickets from there to NY Penn Station are about $14
+one-way.  To get to Penn Station from the Newark Airport station, hop
+on a northbound <a
+href="http://www.njtransit.com/pdf/rail/r0070.pdf">Northeast Corridor
+NJ Transit train</a> to New York Penn Station (the end of the line on
+northbound trains).  From here you can catch the subway to the hotel
+and conference venue (see directions below).  Travel time is
+approximately an hour.  
+</p>
+<p>
+Coach buses, under the Olympia Trails line, operates buses from Newark
+airport to Grand Central terminal and the Port Authority Bus Terminal; a
+one-way ticket is $13.  
+</p>
+</li>
+<li>
+<p>
+From Kennedy Airport (JFK): A taxi to the Upper West Side will cost
+between $60 and $70.  Taxis operate on a flat-rate system; the taxi
+dispatcher will hand you a yellow rate card and indicate what your
+base flat-rate fare, before tolls and tip, will be.
+</p>
+<p>
+There are also very good mass transit options: the "AirTrain" operates
+on the MetroCard system, and for $5 will get you either to the A
+subway line (which then will take about a 45-minute ride into
+Manhattan for about $2) or to the Jamaica station of the <a
+href="http://www.mta.nyc.ny.us/lirr/">Long Island Rail Road</a>, where
+trains depart frequently to New York Penn Station (taking about 30
+minutes and costing less than $10).
+</p>
+<p>
+Bus service from JFK to Grand Central Terminal, New York Penn Station,
+and the Port Authority Bus Terminal (all in Midtown) are about $12 one-way.
+</p>
+<p>Be sure to check for flights from discount carriers such as
+JetBlue, as they have many inexpensive flights from many cities to
+JFK and are not listed by many travel agents/services.
+</p> 
+<li>
+<p>
+From LaGuardia (LGA): The best option is to take
+a taxi, which should cost around $30 including tip and the Triboro
+bridge toll.  Buses exist, but aren't recommended.
+</p>
+</li>
+</ul>
+<p>
+Beware that if you are taking the train and subway through the city,
+especially during rush hour, keep luggage to a minimum.  It will be
+difficult to pull multiple large bags through the crowded train
+stations.
+</p>
+<h3>Getting from Transit Hubs to the Conference/Hotels</h3> 
+<p>
+New York City has an excellent Subway system that can get you to most
+of the city, including the conference venue and hotels.  The
+Metropolitan transit authority has a Subway map for the city <a
+href="http://www.mta.nyc.ny.us/nyct/maps/submap.htm">here</a>.  The #1
+train line is marked in red on the map, the S-line as grey.
+</p>
+<ul>
+<li>From Grand Central Terminal: take the "S" (Shuttle) subway line to
+42nd street/Times Square, then transfer to the UPTOWN #1 Train.  Exit at
+79th street for hotels, 116th street for Columbia University.</li>  
+
+<li>From the Port Authority Bus Terminal: exit to the street, and walk one
+block East to the #1 Subway line entrance.  Take an UPTOWN #1 train.  Exit
+at 79th street for hotels, 116th street for Columbia University.  Note that
+you may see signs for the #1 train within the Port Authority Bus Terminal,
+however, reaching the #1 train from there requires much scurrying through
+underground tunnels.  </li>
+
+<li> From New York Penn Station.  The Uptown #1 train can be found at
+the East end of the station.  Unfortunately, the station is lightless,
+making it hard to tell which way is East, so ask directions or follow
+the signs to the #1 Subway.  </li>
+</ul>
+
+<h3>Getting Around Manhattan</h3>
+<p>
+The two main effective means are subways and taxis.  A single subway
+trip costs $2; the easiest way to pay for the subway is to buy a
+MetroCard, which can either be time-based (flat fare for a day or
+week) or money-based.  Taxis can be more cost-effective if you can
+share a cab with others; the cab fare from the hotel to the
+conference, or from the hotel to Times Square, should run less than
+$10; a cab can fit four people.  The MetroCard works on buses as well,
+but the bus lines are better saved for scenic views or crosstown
+trips.
+</p>
+<h3>Going between Conference Events</h3>
+
+<p>To get from the hotels to Columbia: go to the #1 Subway stop at
+79th and Broadway, make sure to enter on the East side of Broadway to
+get an UPTOWN train, and take the subway to 116th street.  Enter the
+main Columbia campus through the big gates to the east of the subway
+stop, then head diagonally northeast across campus to either the CS
+department or Schapiro Center.  Or, go out to the street, raise your
+hand to hail a cab, and tell the driver "Columbia University".  You
+may need to add "116th street entrance on Broadway".  <a
+href="http://www.columbia.edu/about_columbia/map/schapiro_center.html">Here</a>
+is a map of the Columbia Campus with Schapiro Center highlighted.  The
+Subway stop is on the lower left-hand corner of the map (at Broadway
+and 116th Street).  North is up on the map.
+</p>
+<p>
+To get from Columbia to the hotels or activities: go to the #1 Subway
+stop at 116th and Broadway, and take a DOWNTOWN train (you can enter on
+either side of the street).  Exit at 79th street for hotels, or 42nd street
+for activities.  
+</p>
+<p>
+To return from activities: There are #1 Subway stops on Broadway at 50th
+and 42nd streets.  Make sure to use an UPTOWN entrance.  Exit at 79th street
+for hotels.
+</p>
+
+<h3>Restaurants in the Columbia Area</h3>
+<ul>
+<li>
+Ollies Noodle Shop (chinese) 
+<address>
+2957 Broadway, New York, NY <br>
+</address>
+(212) 932-3300 
+</li>
+<li>
+Caffe Swish (pan-asian) 
+<address>
+2955 Broadway, New York, NY 
+</address>
+(212) 222-3568 
+<li>
+Starbucks Broadway & 114 Street 
+2929 Broadway (WiFi hotspot) West End (bar) 
+<address>
+2909 Broadway, New York, NY 
+</address>
+(212) 662-8830 
+<li>Amsterdam Cafe (cosmopolitan) 
+<address>
+1207 Amsterdam Ave, New York, NY 
+</address>
+(212) 662-6330 
+<li>Sezz Medi (mediterranean) 
+<address>
+1260 Amsterdam Ave, New York, NY 
+</address>
+(212) 932-2901 
+<li>Massawa Restaurant (ethiopean) 
+<address>
+1239 Amsterdam Ave, New York, NY 
+</address>
+(212) 663-0505 
+<li>Andros Pizza 
+<address>
+1215 Amsterdam Ave, New York, NY 
+</address>
+(212) 864-7300 
+<li>Max Soho Restaurant (mediterranean) 
+<address>
+1274 Amsterdam Ave, New York, NY 
+</address>
+(212) 531-2221 
+<li>Terrace in the Sky (expensive, great view) 
+<address>
+400 W. 119th St. (Amsterdam Ave. & Morningside Dr.) <br />
+New York, NY 10027 
+</address>
+212-666-9490
+</ul>
+</p>
+</body>
+</html>
+
+
+
+
+

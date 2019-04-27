@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<link rel="stylesheet" href="http://cgo.org/cgo2006/html/style.css">
+
+<title>CGO-4 Keynote: Guy Steele </title>
+<base target="_top">
+</head>
+
+<body>
+<h2>Keynote: Parallel Programming and Code Selection in Fortress</h2>
+<b>Guy L. Steele Jr., Sun Fellow, Sun Microsystems Laboratories</b>
+
+<p>
+<b>Abstract</b><br>
+As part of the DARPA program for High Productivity Computing Systems,
+the Programming Language Research Group at Sun Microsystems
+Laboratories is developing Fortress, a language intended to support
+large-scale scientific computation with the same level of portability
+that the Java programming language provided for multithreaded
+commercial applications.  One of the design principles of Fortress is
+that parallelism be encouraged everywhere; for example, it is
+intentionally just a little bit harder to write a sequential loop than
+a parallel loop.  Another is to have rich mechanisms for encapsulation
+and abstraction; the idea is to have a fairly complicated language for
+library writers that enables them to write libraries that present a
+relatively simple set of interfaces to the application programmer.
+Thus Fortress is as much a framework for language developers as it is
+a language for coding scientific applications.  We will discuss ideas
+for using a rich parameterized polymorphic type system to organize
+multithreading and data distribution on large parallel machines.  The
+net result is similar in some ways to data distribution facilities in
+other languages such as HPF and Chapel, but more open-ended, because
+in Fortress the facilities are defined by user-replaceable and
+-extendable libraries rather than wired into the compiler.  A
+sufficiently rich type system can take the place of certain kinds of
+flow analysis to guide certain kinds of code selection and
+optimization, again moving policymaking out of the compiler and into
+libraries coded in the Fortress source language.
+</p>
+
+</body>
+
+</html>
+
+
+
+
+

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<link rel="stylesheet" href="http://cgo.org/cgo2006/html/style.css">
+
+<title>CGO-4 Student Travel Support</title>
+<base target="_top">
+</head>
+
+<body>
+
+<h2>Compiler mediated performance of a Cell Processor</h2>
+<i>Organizers: Kathryn O'Briend, Alexandre Eichenberger, Kevin O'Brien, and Michael Gschwind, IBM</i><br />
+
+<p>
+Developed for multimedia and game application workloads, the Cell
+processor provides support for highly parallel codes, which have high
+computation and memory requirements, as well as for scalar codes,
+which require fast response times and full featured programming
+environments. This first generation Cell processor implements on a
+single chip a POWER processor with two levels of cache and eight
+attached streaming processors with their own local memories and
+globally consistent DMA engines. In addition to processor-level
+parallelism, each processing element has Single Instruction Multiple
+Data (SIMD) units that can each process from 2 double floats up to 16
+chars per cycle.
+</p>
+<p> The complexities of the Cell processor span multiple dimensions.
+At the elementary level, the Cell system has two distinct processor
+types, each with its own application level ISA.  One ISA (PE) is the
+familiar 64-bit PowerPC with VMX, the other, (SPE) is a new 128-bit
+SIMD instruction set for multimedia and general floating point
+processing. Typical applications on the Cell processor will consist of
+a combination of codes to exploit both these processors. The pipelines
+of both processor types must be taken into account, and the SPE
+presents several challenges not seen in the PX, chief among them the
+instruction prefetch capabilities and the significant branch miss
+penalties resulting from the lack of hardware branch prediction. At
+the next level, the SPE is a short SIMD or multimedia processor with
+scant support for scalar operations. On the next dimension is the
+parallelism of the machine when deploying applications across all
+SPEs.
+</p>
+<p>
+It has been demonstrated that expert programmers can develop and hand
+tune applications to exploit the full performance potential of this
+machine. We believe that sophisticated compiler optimization
+technology can bridge the gap between usability and performance in
+this arena. To this end we have developed a research prototype
+compiler targeting the Cell processor.  In this tutorial we discuss a
+variety of compiler techniques we have investigated/implemented, and
+their associated performance benefits.  These techniques are aimed at
+automatically generating high quality codes over the broad spectrum
+of heterogeneous parallelism available on the Cell processor.
+</p>
+<p>
+The tutorial will begin with a brief overview of the Cell architecture
+to motivate the discussion of compiling to exploit specific novel
+features of the architecture. The techniques we describe include
+compiler supported branch prediction, compiler assisted instruction
+fetch, and the generation of scalar codes on SIMD units. We will then
+discuss our techniques for automatic generation of SIMD codes, and
+automatically parallelizing single programs across the multiple
+heterogeneous processors. In particular we will describe and discuss
+the performance of our technique for presenting the user with a single
+shared memory image through our compiler controlled memory
+management. We will also report and discuss the results we have
+achieved to date, which indicate that significant speedup can be
+achieved on this processor with a high level of support from the
+compiler.
+</p>
+
+<h3>Intended Audience</h3>
+<p>
+This tutorial is intended for those with a background in Computer
+Architecture and Compiler Writing. Some knowledge of parallelization
+techniques would also be useful.
+</p>
+
+<h3>The Speakers</h3>
+<p>
+<ul>
+<li> Kevin O'Brien has spent the last 24 years at IBM working in the
+field of compilation and architecture. Initially, at the IBM Toronto
+Lab, he was the architect of the TOBEY optimizing backend (used in
+IBM's xlc, xlf, and xlC (C++) product compilers). Subsequently, Kevin
+has spent 17 years at IBM Research, where his research interests have
+included Multithreaded Architecture, Smalltalk, Java, continuous
+optimization, binary translation and optimization, parallelization and
+vectorization (including SIMDization), for several processors, most
+recently the Cell processor. He has also contributed to the
+architectures of Power, PowerPC and Cell. Currently, Kevin is
+investigating memory related optimizations for the Cell processor.</li>
+
+<li>Alexandre Eichenberger is a compiler researcher at IBM TJ Watson
+Research Center and has been involved in the CELL compiler project
+since its inception.  During the initial port of the IBM XL production
+compiler to the SPEs (the 8 SIMD-centric attached processors in the
+CELL architecture), Dr. Eichenberger addressed SPE-specific scheduling
+and bundling issues, including compiler techniques to prevent
+instruction fetch starvation.  Dr. Eichenberger currently contributes
+to the automatic generation of SIMD code targeting the SIMD units
+found in the CELL (SPE/VMX), Power (VMX), and BlueGene/L
+(double-precision floating-point) architectures, focusing on data
+alignment related issues.  Prior research interests include
+instruction-level parallelism, predicated execution, profiling
+techniques, and software pipelining.</li>
+
+<li>Kathryn O'Brien has worked at IBM for 23 years, 17 of them as a
+researcher at IBM TJ Watson Research Center, where she has been
+involved in several static and dynamic compiler projects. She was
+involved in the initial IBM XL Fortran compiler, and the early
+vectorization and parallelization efforts in the XL compilers.  Most
+recently she has played a key role in prototyping compilers for the
+CELL architecture, where her specific interests are in both scalar
+compilation techniques and in compiler exploitation of the multiple
+levels of parallelism through a single source compiler.  </li>
+
+<li>Michael Gschwind is a computer architect at the IBM TJ Watson
+ Research Center and one of the architects of the novel SIMD-centric
+ SPU architecture used in CELL.  During the definition of the SPU
+ architecture, Dr. Gschwind also developed the first SPU prototype
+ compiler.  Prior to the inception of the CELL project, Dr. Gschwind
+ contributed to the development of the DAISY tree-based VLIW core and
+ was an architect for the BOA high-frequency VLIW design, based on
+ advanced dynamic compilation technology to achieve compatible PowerPC
+ implementations.  Dr. Gschwind is an IBM Master inventor and holds
+ patents on dynamic compilation, VLIW architecture, media processing
+ technology, and computer microarchitecture.
+</li>
+</ul>
+</p>
+</body>
+
+</html>
